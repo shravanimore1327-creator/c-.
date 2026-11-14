@@ -13,16 +13,15 @@ class HashTable {
 	int SIZE;
 	list<pair<int, string>>* table; 
 
-	int hashFunction {
+	int hashFunction(int key) {
 	    return key % SIZE;
-	} 
+	  }; 
 
 public:
     HashTable(int size) {
 	SIZE = size;
 	table = new list<pair<int, string>>[SIZE];
 	}
-}
 
 
 void insert(int key, string value) {
@@ -34,9 +33,9 @@ void insert(int key, string value) {
 	         return;
 	     }
 	}
-	table[index].push_back({key, value})
+	table[index].push_back({key, value});
 	cout << "Inserted " << " ( " << key << " : " << value << " ) \n ";
-}
+};
 
 
 void find(int key) {
@@ -48,12 +47,12 @@ void find(int key) {
 	     }
 	}
 	cout << "Key not found!";
-}
+};
 
 
 void remove(int key) {
 	int index = hashFunction(key);
-    for (auto it == table[index].begin(); it != table[index].end(); ++it) {
+    for (auto it = table[index].begin(); it != table[index].end(); ++it) {
 	     if (it->first == key) {
 	         table[index].erase(it);	         
 	         cout << "Deleted " << key << endl;
@@ -61,7 +60,7 @@ void remove(int key) {
 	    }
 	}
 	cout << "Key not found!";
-}
+};
 
 
 void display() {
@@ -85,7 +84,7 @@ int main() {
 
     HashTable dict(size);
 	int choice, key;
-	int string value;
+	string value;
     
 	do {
 	    cout << "\nMenu\n";
@@ -122,5 +121,5 @@ int main() {
 
 	    }
 	} while(choice != 5);
-	return;	
+	return 0;	
 }
